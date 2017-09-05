@@ -116,10 +116,10 @@ public class LDAPProvidersIntegrationTest {
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
             LDAPTestUtils.removeAllLDAPUsers(ldapFedProvider, appRealm);
 
-            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, "1234");
+            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, john, "Password1");
 
-            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, "5678");
+            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, null, "5678");
 
             appRealm.getClientByClientId("test-app").setDirectAccessGrantsEnabled(true);
         }
@@ -254,9 +254,9 @@ public class LDAPProvidersIntegrationTest {
             RealmManager manager = new RealmManager(session);
             RealmModel appRealm = manager.getRealm("test");
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject jbrown2 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "JBrown2", "John", "Brown2", "jbrown2@email.org", null, "1234");
+            LDAPObject jbrown2 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "JBrown2", "John", "Brown2", "jbrown2@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, jbrown2, "Password1");
-            LDAPObject jbrown3 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown3", "John", "Brown3", "JBrown3@email.org", null, "1234");
+            LDAPObject jbrown3 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown3", "John", "Brown3", "JBrown3@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, jbrown3, "Password1");
         } finally {
             keycloakRule.stopSession(session, true);
@@ -288,9 +288,9 @@ public class LDAPProvidersIntegrationTest {
             RealmManager manager = new RealmManager(session);
             RealmModel appRealm = manager.getRealm("test");
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject jbrown4 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "JBrown4", "John", "Brown4", "jbrown4@email.org", null, "1234");
+            LDAPObject jbrown4 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "JBrown4", "John", "Brown4", "jbrown4@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, jbrown4, "Password1");
-            LDAPObject jbrown5 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown5", "John", "Brown5", "JBrown5@Email.org", null, "1234");
+            LDAPObject jbrown5 = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown5", "John", "Brown5", "JBrown5@Email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, jbrown5, "Password1");
         } finally {
             keycloakRule.stopSession(session, true);
@@ -479,7 +479,7 @@ public class LDAPProvidersIntegrationTest {
       	
      // Create the user in LDAP and register him
 
-       LDAPObject mary = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "maryjane", "mary", "yram", "mj@testing.redhat.cz", null, "12398");
+       LDAPObject mary = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "maryjane", "mary", "yram", "mj@testing.redhat.cz", null, null, "12398");
        LDAPTestUtils.updateLDAPPassword(ldapProvider, mary, "Password1");
         
         try {
@@ -531,7 +531,7 @@ public class LDAPProvidersIntegrationTest {
             RealmModel appRealm = new RealmManager(session).getRealmByName("test");
 
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject johnZip = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnzip", "John", "Zip", "johnzip@email.org", null, "12398");
+            LDAPObject johnZip = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnzip", "John", "Zip", "johnzip@email.org", null, null, "12398");
 
             // Remove default zipcode mapper and add the mapper for "POstalCode" to test case sensitivity
             ComponentModel currentZipMapper = LDAPTestUtils.getSubcomponentByName(appRealm, ldapModel, "zipCodeMapper");
@@ -564,10 +564,10 @@ public class LDAPProvidersIntegrationTest {
             }
 
             if (!skip) {
-                LDAPObject johnComma = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "john,comma", "John", "Comma", "johncomma@email.org", null, "12387");
+                LDAPObject johnComma = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "john,comma", "John", "Comma", "johncomma@email.org", null, null, "12387");
                 LDAPTestUtils.updateLDAPPassword(ldapFedProvider, johnComma, "Password1");
 
-                LDAPObject johnPlus = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "john+plus,comma", "John", "Plus", "johnplus@email.org", null, "12387");
+                LDAPObject johnPlus = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "john+plus,comma", "John", "Plus", "johnplus@email.org", null, null, "12387");
                 LDAPTestUtils.updateLDAPPassword(ldapFedProvider, johnPlus, "Password1");
             }
         } finally {
@@ -589,7 +589,7 @@ public class LDAPProvidersIntegrationTest {
             RealmModel appRealm = new RealmManager(session).getRealmByName("test");
 
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject johnDirect = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johndirect", "John", "Direct", "johndirect@email.org", null, "12399");
+            LDAPObject johnDirect = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johndirect", "John", "Direct", "johndirect@email.org", null, null, "12399");
 
             // Fetch user from LDAP and check that postalCode is filled
             UserModel user = session.users().getUserByUsername("johndirect", appRealm);
@@ -675,7 +675,7 @@ public class LDAPProvidersIntegrationTest {
 
             // Add the user with some fullName into LDAP directly. Ensure that fullName is saved into "cn" attribute in LDAP (currently mapped to model firstName)
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "fullname", "James Dee", "Dee", "fullname@email.org", null, "4578");
+            LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "fullname", "James Dee", "Dee", "fullname@email.org", null, null, "4578");
 
             // add fullname mapper to the provider and remove "firstNameMapper". For this test, we will simply map full name to the LDAP attribute, which was before firstName ( "givenName" on active directory, "cn" on other LDAP servers)
             firstNameMapper =  LDAPTestUtils.getSubcomponentByName(appRealm, ldapModel, "first name");
@@ -867,9 +867,9 @@ public class LDAPProvidersIntegrationTest {
             @Override
             public void config(RealmManager manager, RealmModel adminstrationRealm, RealmModel appRealm) {
                 LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-                LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marykeycloak", "Mary1", "Kelly1", "mary1@email.org", null, "123");
-                LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "mary-duplicatemail", "Mary2", "Kelly2", "mary@test.com", null, "123");
-                LDAPObject marynoemail = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marynoemail", "Mary1", "Kelly1", null, null, "123");
+                LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marykeycloak", "Mary1", "Kelly1", "mary1@email.org", null, null, "123");
+                LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "mary-duplicatemail", "Mary2", "Kelly2", "mary@test.com", null, null, "123");
+                LDAPObject marynoemail = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marynoemail", "Mary1", "Kelly1", null, null, null, "123");
                 LDAPTestUtils.updateLDAPPassword(ldapFedProvider, marynoemail, "Password1");
             }
 
@@ -974,10 +974,10 @@ public class LDAPProvidersIntegrationTest {
             RealmModel appRealm = session.realms().getRealmByName("test");
             LDAPStorageProvider ldapProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
 
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username1", "John1", "Doel1", "user1@email.org", null, "121");
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username2", "John2", "Doel2", "user2@email.org", null, "122");
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username3", "John3", "Doel3", "user3@email.org", null, "123");
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username4", "John4", "Doel4", "user4@email.org", null, "124");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username1", "John1", "Doel1", "user1@email.org", null, null, "121");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username2", "John2", "Doel2", "user2@email.org", null, null, "122");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username3", "John3", "Doel3", "user3@email.org", null, null, "123");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username4", "John4", "Doel4", "user4@email.org", null, null, "124");
 
             // Users are not at local store at this moment
             Assert.assertNull(session.userLocalStorage().getUserByUsername("username1", appRealm));
@@ -1022,9 +1022,9 @@ public class LDAPProvidersIntegrationTest {
             LDAPStorageProvider ldapProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
             RealmModel appRealm = session.realms().getRealmByName("test");
 
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username5", "John5", "Doel5", "user5@email.org", null, "125");
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username6", "John6", "Doel6", "user6@email.org", null, "126");
-            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username7", "John7", "Doel7", "user7@email.org", null, "127");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username5", "John5", "Doel5", "user5@email.org", null, null, "125");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username6", "John6", "Doel6", "user6@email.org", null, null, "126");
+            LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "username7", "John7", "Doel7", "user7@email.org", null, null, "127");
 
             // search by email
             List<UserModel> list = session.users().searchForUser("user5@email.org", appRealm);

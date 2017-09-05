@@ -95,7 +95,7 @@ public class LDAPSpecialCharsTest {
             ComponentModel mapperModel = LDAPTestUtils.getSubcomponentByName(appRealm, ldapModel, "groupsMapper");
             new GroupLDAPStorageMapperFactory().create(session, mapperModel).syncDataFromFederationProviderToKeycloak(appRealm);
 
-            LDAPObject james2 = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "jamees,key*cložak)ppp", "James2", "Brown2", "james2@email.org", null, "89102");
+            LDAPObject james2 = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "jamees,key*cložak)ppp", "James2", "Brown2", "james2@email.org", null, null, "89102");
             LDAPTestUtils.updateLDAPPassword(ldapProvider, james2, "Password1");
         }
 

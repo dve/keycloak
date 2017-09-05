@@ -85,10 +85,10 @@ public class LDAPLegacyImportTest {
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
             LDAPTestUtils.removeAllLDAPUsers(ldapFedProvider, appRealm);
 
-            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, "1234");
+            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, john, "Password1");
 
-            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, "5678");
+            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, null, "5678");
 
             appRealm.getClientByClientId("test-app").setDirectAccessGrantsEnabled(true);
         }

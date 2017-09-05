@@ -91,10 +91,10 @@ public class LDAPNoMSADTest {
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
             LDAPTestUtils.removeAllLDAPUsers(ldapFedProvider, appRealm);
 
-            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, "1234");
+            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, john, "Password1");
 
-            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, "5678");
+            LDAPObject existing = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "existing", "Existing", "Foo", "existing@email.org", null, null, "5678");
 
             appRealm.getClientByClientId("test-app").setDirectAccessGrantsEnabled(true);
         }
@@ -115,7 +115,7 @@ public class LDAPNoMSADTest {
             // Create LDAP user with "sn" attribute in RDN like "sn=johnkeycloak2,ou=People,dc=domain,dc=com"
             RealmModel appRealm = session.realms().getRealmByName("test");
             LDAPStorageProvider ldapProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject john2 = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "johnkeycloak2", "john2", "Doe2", "john2@email.org", null, "4321");
+            LDAPObject john2 = LDAPTestUtils.addLDAPUser(ldapProvider, appRealm, "johnkeycloak2", "john2", "Doe2", "john2@email.org", null, null, "4321");
 
             john2.setRdnAttributeName("sn");
             ldapProvider.getLdapIdentityStore().update(john2);

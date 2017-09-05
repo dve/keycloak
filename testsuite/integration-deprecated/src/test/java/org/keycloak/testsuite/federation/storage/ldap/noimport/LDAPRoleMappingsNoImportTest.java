@@ -100,13 +100,13 @@ public class LDAPRoleMappingsNoImportTest {
             LDAPTestUtils.removeAllLDAPRoles(manager.getSession(), appRealm, ldapModel, "financeRolesMapper");
 
             // Add some users for testing
-            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, "1234");
+            LDAPObject john = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "johnkeycloak", "John", "Doe", "john@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, john, "Password1");
 
-            LDAPObject mary = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marykeycloak", "Mary", "Kelly", "mary@email.org", null, "5678");
+            LDAPObject mary = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "marykeycloak", "Mary", "Kelly", "mary@email.org", null, null, "5678");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, mary, "Password1");
 
-            LDAPObject rob = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "robkeycloak", "Rob", "Brown", "rob@email.org", null, "8910");
+            LDAPObject rob = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "robkeycloak", "Rob", "Brown", "rob@email.org", null, null, "8910");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, rob, "Password1");
 
             // Add some roles for testing

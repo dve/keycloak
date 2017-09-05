@@ -85,7 +85,7 @@ public class LDAPSyncTest {
             LDAPTestUtils.removeAllLDAPUsers(ldapFedProvider, appRealm);
 
             for (int i=1 ; i<=5 ; i++) {
-                LDAPObject ldapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "user" + i, "User" + i + "FN", "User" + i + "LN", "user" + i + "@email.org", null, "12" + i);
+                LDAPObject ldapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "user" + i, "User" + i + "FN", "User" + i + "LN", "user" + i + "@email.org", null, null, "12" + i);
                 LDAPTestUtils.updateLDAPPassword(ldapFedProvider, ldapUser, "Password1");
             }
         }
@@ -144,7 +144,7 @@ public class LDAPSyncTest {
 
             // Add user to LDAP and update 'user5' in LDAP
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user6", "User6FN", "User6LN", "user6@email.org", null, "126");
+            LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user6", "User6FN", "User6LN", "user6@email.org", null, null, "126");
             LDAPObject ldapUser5 = ldapFedProvider.loadLDAPUserByUsername(testRealm, "user5");
             // NOTE: Changing LDAP attributes directly here
             ldapUser5.setSingleAttribute(LDAPConstants.EMAIL, "user5Updated@email.org");
@@ -187,7 +187,7 @@ public class LDAPSyncTest {
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
 
             // Add user to LDAP with duplicated username "user7"
-            duplicatedLdapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user7", "User7FN", "User7LN", "user7-something@email.org", null, "126");
+            duplicatedLdapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user7", "User7FN", "User7LN", "user7-something@email.org", null, null, "126");
 
         } finally {
             keycloakRule.stopSession(session, true);
@@ -206,7 +206,7 @@ public class LDAPSyncTest {
             ldapFedProvider.getLdapIdentityStore().remove(duplicatedLdapUser);
 
             // Add user to LDAP with duplicated email "user7@email.org"
-            duplicatedLdapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user7-something", "User7FNN", "User7LNL", "user7@email.org", null, "126");
+            duplicatedLdapUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user7-something", "User7FNN", "User7LNL", "user7@email.org", null, null, "126");
         } finally {
             keycloakRule.stopSession(session, true);
         }
@@ -328,7 +328,7 @@ public class LDAPSyncTest {
             // Add street mapper and add some user including street
             ComponentModel streetMapper = LDAPTestUtils.addUserAttributeMapper(testRealm, ldapModel, "streetMapper", "street", LDAPConstants.STREET);
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
-            LDAPObject streetUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user8", "User8FN", "User8LN", "user8@email.org", "user8street", "126");
+            LDAPObject streetUser = LDAPTestUtils.addLDAPUser(ldapFedProvider, testRealm, "user8", "User8FN", "User8LN", "user8@email.org", "user8street", null, "126");
 
             // Change name of username attribute name to street
             origUsernameAttrName = providerModel.getConfig().getFirst(LDAPConstants.USERNAME_LDAP_ATTRIBUTE);

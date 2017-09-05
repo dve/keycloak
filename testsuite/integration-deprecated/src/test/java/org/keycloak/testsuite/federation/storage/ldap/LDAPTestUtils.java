@@ -91,7 +91,7 @@ public class LDAPTestUtils {
     }
 
     public static LDAPObject addLDAPUser(LDAPStorageProvider ldapProvider, RealmModel realm, final String username,
-                                         final String firstName, final String lastName, final String email, final String street, final String... postalCode) {
+                                         final String firstName, final String lastName, final String email, final String street, String telephone, final String... postalCode) {
         UserModel helperUser = new UserModelDelegate(null) {
 
             @Override
@@ -120,6 +120,8 @@ public class LDAPTestUtils {
                     return Arrays.asList(postalCode);
                 } else if ("street".equals(name) && street != null) {
                     return Collections.singletonList(street);
+                } else if ("telephone".equals(name) && telephone != null) {
+                    return Collections.singletonList(telephone);
                 } else {
                     return Collections.emptyList();
                 }

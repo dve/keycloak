@@ -315,7 +315,7 @@ public class LDAPGroupMapperSyncTest {
 
             // Add user to LDAP and put him as member of group11
             LDAPTestUtils.removeAllLDAPUsers(ldapProvider, realm);
-            LDAPObject johnLdap = LDAPTestUtils.addLDAPUser(ldapProvider, realm, "johnkeycloak", "John", "Doe", "john@email.org", null, "1234");
+            LDAPObject johnLdap = LDAPTestUtils.addLDAPUser(ldapProvider, realm, "johnkeycloak", "John", "Doe", "john@email.org", null, null, "1234");
             LDAPTestUtils.updateLDAPPassword(ldapProvider, johnLdap, "Password1");
             groupMapper.addGroupMappingInLDAP(realm, "group11", johnLdap);
 

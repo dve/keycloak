@@ -103,11 +103,11 @@ public class LDAPMultipleAttributesTest {
             LDAPStorageProvider ldapFedProvider = LDAPTestUtils.getLdapProvider(session, ldapModel);
             LDAPTestUtils.removeAllLDAPUsers(ldapFedProvider, appRealm);
 
-            LDAPObject james = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown", "James", "Brown", "jbrown@keycloak.org", null, "88441");
+            LDAPObject james = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "jbrown", "James", "Brown", "jbrown@keycloak.org", null, null, "88441");
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, james, "Password1");
 
             // User for testing duplicating surname and postalCode
-            LDAPObject bruce = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "bwilson", "Bruce", "Wilson", "bwilson@keycloak.org", "Elm 5", "88441", "77332");
+            LDAPObject bruce = LDAPTestUtils.addLDAPUser(ldapFedProvider, appRealm, "bwilson", "Bruce", "Wilson", "bwilson@keycloak.org", "Elm 5", null, "88441", "77332");
             bruce.setAttribute("sn", new LinkedHashSet<>(Arrays.asList("Wilson", "Schneider")));
             ldapFedProvider.getLdapIdentityStore().update(bruce);
             LDAPTestUtils.updateLDAPPassword(ldapFedProvider, bruce, "Password1");
